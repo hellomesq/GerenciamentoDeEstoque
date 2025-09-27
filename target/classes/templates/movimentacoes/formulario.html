@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nova Movimentação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gradient-to-b from-white to-gray-50 min-h-screen p-8 font-sans text-gray-800"
+  >
+    <div class="max-w-lg mx-auto bg-white rounded-xl shadow p-6">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+        Registrar Movimentação
+      </h2>
+
+      <form
+        th:action="@{/movimentacoes/salvar}"
+        th:object="${movimentacao}"
+        method="post"
+        class="space-y-6"
+      >
+        <div>
+          <label class="block text-gray-800 font-semibold mb-2">Produto</label>
+          <select
+            th:field="*{produto.id}"
+            required
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-gray-400 transition"
+          >
+            <option
+              th:each="produto : ${produtos}"
+              th:value="${produto.id}"
+              th:text="${produto.nome}"
+              th:selected="${produto.id} == ${movimentacao.produto.id}"
+            ></option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-800 font-semibold mb-2"
+            >Tipo de Movimentação</label
+          >
+          <select
+            th:field="*{tipo}"
+            required
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-gray-400 transition"
+          >
+            <option value="ENTRADA">Entrada</option>
+            <option value="SAIDA">Saída</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-800 font-semibold mb-2"
+            >Quantidade</label
+          >
+          <input
+            type="number"
+            th:field="*{quantidade}"
+            min="1"
+            required
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-gray-400 transition"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full py-3 text-white rounded-lg font-bold shadow-lg transition"
+          style="background: linear-gradient(90deg, #095d46 0%, #2fa38b 100%)"
+        >
+          Registrar Movimentação
+        </button>
+      </form>
+
+      <a
+        th:href="@{/produtos/listar}"
+        class="block text-center mt-6 text-gray-600 hover:text-gray-800 transition"
+      >
+        Voltar à Lista de Produtos
+      </a>
+    </div>
+  </body>
+</html>

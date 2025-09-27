@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Produtos Disponíveis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gradient-to-b from-white to-gray-50 min-h-screen p-8 font-sans text-gray-800"
+  >
+    <div class="max-w-6xl mx-auto bg-slate-100 rounded-xl shadow p-6">
+
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+        Gerencie o estoque do seu Sebo
+      </h2>
+
+      <p th:if="${vazio}" class="text-red-500 mb-4 font-semibold">
+        Não há produtos cadastrados.
+      </p>
+
+      <div th:if="${!vazio}" class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+          <thead class="bg-gradient-to-r from-blue-900 to-green-800 text-white">
+            <tr>
+              <th class="py-3 px-6 text-left font-medium">Nome</th>
+              <th class="py-3 px-6 text-left font-medium">Quantidade</th>
+              <th class="py-3 px-6 text-left font-medium">Descrição</th> 
+              <th class="py-3 px-6 text-left font-medium">Ações</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-800">
+            <tr
+              th:each="prod : ${produtos}"
+              class="hover:bg-gray-100 transition"
+            >
+              <td class="py-3 px-6" th:text="${prod.nome}"></td>
+              <td class="py-3 px-6" th:text="${prod.quantidadeAtual}"></td>
+              <td class="py-3 px-6" th:text="${prod.descricao}"></td>
+              <td class="py-3 px-6 space-x-2">
+                <!-- Movimentar -->
+                <a
+                  th:href="@{'/movimentacoes/nova'(produtoId=${prod.id})}"
+                  class="px-3 py-1 text-white rounded-lg transition text-sm"
+                  style="
+                    background: linear-gradient(
+                      90deg,
+                      #095d46 0%,
+                      #2fa38b 100%
+                    );
+                  "
+                >
+                  Movimentar
+                </a>
+
+                <!-- Editar -->
+                <a
+                  th:href="@{/produtos/editar/{id}(id=${prod.id})}"
+                  class="px-3 py-1 text-white rounded-lg transition text-sm"
+                  style="
+                    background: linear-gradient(
+                      90deg,
+                      #1e3a8a 0%,
+                      #2563eb 100%
+                    );
+                  "
+                >
+                  Editar
+                </a>
+
+                <!-- Excluir -->
+                <form
+                  th:action="@{/produtos/excluir/{id}(id=${prod.id})}"
+                  method="post"
+                  style="display: inline"
+                >
+                  <button
+                    type="submit"
+                    onclick="return confirm('Tem certeza que deseja excluir este produto?')"
+                    class="px-3 py-1 text-white rounded-lg transition text-sm"
+                    style="
+                      background: linear-gradient(
+                        90deg,
+                        #991b1b 0%,
+                        #dc2626 100%
+                      );
+                    "
+                  >
+                    Excluir
+                  </button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <a
+        th:href="@{/produtos/novo}"
+        class="mt-6 inline-block px-6 py-3 bg-gradient-to-r from-blue-900 to-green-800 text-white rounded-lg font-semibold hover:from-blue-800 hover:to-green-700 transition"
+      >
+        Cadastrar Novo Produto
+      </a>
+
+      <!-- Botão Logout -->
+    <div class="absolute top-4 right-4">
+      <a href="/logout"
+         class="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition">
+        <!-- Ícone -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7"/>
+        </svg>
+        Logout
+      </a>
+    </div>
+    
+    </div>
+  </body>
+</html>

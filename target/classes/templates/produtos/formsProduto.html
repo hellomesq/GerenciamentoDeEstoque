@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cadastrar Produto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-slate-50 min-h-screen p-8 font-sans text-gray-800"
+  >
+    <div class="max-w-lg mx-auto bg-white rounded-xl shadow p-6">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+        Cadastrar Produto
+      </h2>
+
+      <form
+        th:action="@{/produtos/salvar}"
+        th:object="${produto}"
+        method="post"
+        class="space-y-6"
+      >
+        <div>
+          <input type="hidden" th:field="*{id}" />
+          <label class="block text-gray-800 font-semibold mb-2">Nome</label>
+          <input
+            type="text"
+            th:field="*{nome}"
+            required
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-gray-400 transition"
+            placeholder="Nome do produto"
+          />
+        </div>
+
+        <div>
+          <label class="block text-gray-800 font-semibold mb-2"
+            >Quantidade</label
+          >
+          <input
+            type="number"
+            th:field="*{quantidadeAtual}"
+            min="0"
+            required
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-gray-400 transition"
+            placeholder="Quantidade disponível"
+          />
+        </div>
+
+        <div>
+          <label class="block text-gray-800 font-semibold mb-2"
+            >Descrição</label
+          >
+          <input
+            type="text"
+            th:field="*{descricao}"
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-gray-400 transition"
+            placeholder="Descrição opcional"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full py-3 text-white rounded-lg font-bold shadow-lg transition"
+          style="background: linear-gradient(90deg, #095d46 0%, #2fa38b 100%)"
+        >
+          Salvar Produto
+        </button>
+      </form>
+
+      <a
+        th:href="@{/produtos/listar}"
+        class="block text-center mt-6 text-gray-600 hover:text-gray-800 transition"
+      >
+         Voltar à Lista de Produtos
+      </a>
+    </div>
+  </body>
+</html>

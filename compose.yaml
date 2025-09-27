@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_estoque
+    environment:
+      POSTGRES_USER: estoque_user
+      POSTGRES_PASSWORD: estoque_senha
+      POSTGRES_DB: estoque_db
+    ports:
+      - "5432:5432"

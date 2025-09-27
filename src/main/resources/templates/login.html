@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gerenciamento de Estoque</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-gray-50 min-h-screen flex items-center justify-center font-sans">
+
+    <div class="bg-slate-100 rounded-xl shadow-lg p-8 max-w-md w-full">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Entrar no Sistema</h2>
+
+        <p class="text-center text-gray-600 mb-6">Faça login com sua conta Google:</p>
+
+        <a href="/oauth2/authorization/google"
+           class="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-900 to-green-800 hover:from-blue-800 hover:to-green-700 text-white font-semibold px-6 py-3 rounded-lg transition w-full">
+            <!-- Ícone do Google -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="h-5 w-5">
+                <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303C34.826 32.957 30.365 36 24 36c-7.18 0-13-5.82-13-13s5.82-13 13-13c3.041 0 5.825 1.111 7.949 2.928l5.657-5.657C34.196 6.392 29.33 4 24 4 12.954 4 4 12.954 4 24s8.954 20 20 20c11.047 0 20-8.954 20-20 0-1.342-.129-2.642-.389-3.917z"/>
+                <path fill="#FF3D00" d="M6.306 14.691l6.571 4.818C14.783 16.282 19.027 14 24 14c3.041 0 5.825 1.111 7.949 2.928l5.657-5.657C34.196 6.392 29.33 4 24 4c-7.179 0-13 5.821-13 13 0 2.097.519 4.079 1.433 5.836l-6.124 4.855z"/>
+                <path fill="#4CAF50" d="M24 44c5.285 0 10.07-1.942 13.743-5.087l-6.357-5.229C28.923 35.632 26.057 36 24 36c-6.365 0-10.826-3.043-13.303-7.373l-6.571 4.818C8.365 40.982 15.842 44 24 44z"/>
+                <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-1.043 2.956-3.045 5.485-5.743 7.195l.001-.001 6.357 5.229C40.034 38.5 48 30.35 48 24c0-1.342-.129-2.642-.389-3.917z"/>
+            </svg>
+            Login com Google
+        </a>
+
+        <p class="text-center text-gray-500 mt-6 text-sm">
+            © 2025 Gerenciamento de Estoque
+        </p>
+    </div>
+
+</body>
+</html>
