@@ -32,11 +32,19 @@ Movimentações
 - POST /movimentacoes/salvar — Salva uma movimentação de estoque.
 - GET /movimentacoes/listar — Lista todas as movimentações registradas.
 
-## Visualização
+## Como rodar a aplicação
+
+Crie um arquivo na raiz .env:
+
+```bash
+  GOOGLE_CLIENT_ID=376861506229-sstu92t6lcp31iehgh4vqnii4416pf21.apps.googleusercontent.com
+  GOOGLE_CLIENT_SECRET=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
+  ADMIN_EMAIL=helo.alvz@gmail.com
+```
 
 Acesse no navegador:
 
 ```bash
-  http://localhost:8080/produtos/
+  http://localhost:8080
 ```
 
