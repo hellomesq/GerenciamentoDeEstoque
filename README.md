@@ -34,12 +34,16 @@ Movimentações
 
 ## Como rodar a aplicação
 
-Crie um arquivo na raiz .env:
+Antes de rodar o projeto, substitua os valores abaixo no arquivo src/main/resources/application.properties:
+
+- spring.security.oauth2.client.registration.google.client-id
+- spring.security.oauth2.client.registration.google.client-secret
+- admin-email
 
 ```bash
-  GOOGLE_CLIENT_ID=376861506229-sstu92t6lcp31iehgh4vqnii4416pf21.apps.googleusercontent.com
-  GOOGLE_CLIENT_SECRET=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
-  ADMIN_EMAIL=helo.alvz@gmail.com
+  spring.security.oauth2.client.registration.google.client-id=SEU_CLIENT_ID_AQUI
+  spring.security.oauth2.client.registration.google.client-secret=SEU_CLIENT_SECRET_AQUI
+  admin-email=seu.email@exemplo.com
 ```
 
 Acesse no navegador:
